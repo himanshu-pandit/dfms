@@ -1,7 +1,21 @@
 <mat-toolbar color="primary" class="mat-toolbar">
   <!-- after click on "isExpanded" set false and if after another click "isExpanded" will set true -->
 	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
-	<h1 class="example-app-name">DFSMS</h1>
+	<h1 class="app-name"></h1>
+
+	<span class="spacer"></span>
+	<mat-form-field style="visibility:hidden;top: 50px;left: 36px;height: 100%;max-width: 120px;width: 100%;">
+		<mat-select #matSelect style="font-size: medium;">
+		  <mat-option value="option1"><mat-icon mat-list-icon color="primary">person</mat-icon>Profile</mat-option>
+		  <mat-option value="option2"><mat-icon mat-list-icon color="primary">settings</mat-icon>Setting</mat-option>
+		  <mat-option value="option3"><mat-icon mat-list-icon color="primary">exit_to_app</mat-icon>Log out</mat-option>
+		</mat-select>
+	</mat-form-field>
+	<button mat-icon-button class="toolbar-icon" aria-label="Example icon-button with share icon">
+		<img mat-raised-button src="assets/user.png" alt="Photo" style="height:40px;" (click)="matSelect.open()">
+		<span *ngIf="isActive" style="position: absolute; bottom: 0; right: 0; background-color: green; width: 10px; height: 10px; border-radius:10px;"></span>
+	</button>	
+
 </mat-toolbar>
 <!-- "autosize" is used to exapand sidenav according to screen -->
 <mat-sidenav-container style="background-color: #f5f5f7;" autosize>
