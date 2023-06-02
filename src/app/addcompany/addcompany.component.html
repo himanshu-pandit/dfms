@@ -1,0 +1,25 @@
+<div class="addcompany">
+    <h3 class="header">Company<mat-icon>keyboard_arrow_right</mat-icon>Add</h3>
+    <hr style="color:#e7e7f0;height: 1px;">
+    <h1 class="title"><mat-icon class="title-icon" >open_in_new</mat-icon>Add Company</h1>
+    <div class="addcompany-content">  
+        <form class="example-form">
+            <div class="form-field">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Company</mat-label>
+                    <input type="text" matInput [formControl]="companyFormControl" [errorStateMatcher]="matcher"
+                            placeholder="Company">
+                    <mat-icon matSuffix color="primary" *ngIf="companyFormControl.valid">check</mat-icon>
+                    <!-- <mat-icon matSuffix color="primary" *ngIf="companyFormControl.hasError('required')">clear</mat-icon> -->
+                    <mat-error *ngIf="companyFormControl.hasError('required')">
+                    Please provide a valid company name.
+                    </mat-error>
+                    <mat-error *ngIf="companyFormControl.hasError('pattern') && companyFormControl.touched">This symbol is invalid.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <button mat-flat-button color="primary" style="font-size: 18px;" [disabled]="!companyFormControl.valid">Submit</button>
+            </div>
+        </form>
+    </div>  
+</div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'dfms';
+  isExpanded = false;
+  isShowing = false;
+  showCategory: boolean = false;
+  showCompany: boolean = false;
+  showProduct: boolean = false;
+  showReport: boolean = false;
+  //showSubSubMenu: boolean = false;
+
+  constructor(private router: Router){
+    
+  }
+
+  mouseenter() {
+    if (!this.isExpanded) {
+      console.log(this.isExpanded)
+      this.isShowing = true;
+    }
+  }
+
+  mouseleave() {
+    if (!this.isExpanded) {
+      this.isShowing = false;
+    }
+  }
+
+  navigateTo(redirect:any) {
+    this.router.navigate([redirect]); 
+  }
+
+  navigateToAddCategory(redirect:any){
+    this.router.navigate(['/addcategory']); 
+  }
 }

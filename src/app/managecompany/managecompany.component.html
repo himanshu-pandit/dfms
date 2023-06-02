@@ -1,0 +1,49 @@
+<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+<div class="managecompany"> 
+    <h3 class="header">Company<mat-icon>keyboard_arrow_right</mat-icon>Manage</h3>
+    <hr style="color:#e7e7f0;height: 1px;">
+    <h1 class="title"><mat-icon class="title-icon" >open_in_new</mat-icon>Manage Company</h1>
+    <div class="managecompany-content">
+        <div class="table-header">
+            <mat-form-field appearance="outline" class="fieldselect">
+                <mat-select [(value)]="pageSizes">
+                  <mat-option *ngFor="let pageSz of pageSize" [value]="pageSz.size">
+                    {{pageSz.size}}
+                  </mat-option>
+                </mat-select>
+                <mat-label matSuffix>Item</mat-label>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="fieldsearch">
+                <mat-label>Search</mat-label>
+                <input matInput [(ngModel)]="searchcompany" (keyup)="searchCompany()" placeholder="Search">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>Company</th>
+                    <th>Posting Date</th>
+                    <th>Action</th>
+                </tr>
+                <tr *ngFor="let item of data.slice(pageIndex * pageSizes, (pageIndex + 1) * pageSizes); let e=even;let i= index;" 
+                        [class.selected]="selectedRowIndex === i"
+                        (mouseenter)="onRowEnter(i)"
+                        (mouseleave)="onRowLeave()">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.companyName }}</td>
+                    <td>{{ item.postingDate }}</td>
+                    <td>
+                        <mat-icon color="primary" >edit</mat-icon>&nbsp;&nbsp;
+                        <mat-icon color="primary" >delete</mat-icon>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="table-footer">
+            <mat-paginator [pageSize]="pageSizes"  [length]="totalItems" (page)="onPageChange($event)"></mat-paginator>
+        </div>
+    </div>
+</div>

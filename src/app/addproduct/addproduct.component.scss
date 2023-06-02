@@ -1,0 +1,44 @@
+.header{
+    display: flex;
+    align-items: center;
+    color:#c3c3d4;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    .title-icon{
+        color:#c3c3d4;
+        margin-right: 4px;
+    }
+}
+
+.addproduct{
+    padding: 16px;
+    // background-color: white;
+}
+
+.addproduct-content{
+    //display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    max-width: 1200px;
+    padding: 16px;
+    background-color: white;
+}
+
+.example-form {
+    min-width: 250px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.form-field{
+    margin: 6px;
+}
+
+.example-full-width {   
+width: 100%;
+}
+  
