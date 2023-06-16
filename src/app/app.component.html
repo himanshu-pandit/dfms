@@ -4,17 +4,17 @@
 	<h1 class="app-name"></h1>
 
 	<span class="spacer"></span>
-	<mat-form-field style="visibility:hidden;top: 50px;left: 36px;height: 100%;max-width: 120px;width: 100%;">
-		<mat-select #matSelect style="font-size: medium;">
-		  <mat-option value="option1"><mat-icon mat-list-icon color="primary">person</mat-icon>Profile</mat-option>
-		  <mat-option value="option2"><mat-icon mat-list-icon color="primary">settings</mat-icon>Setting</mat-option>
-		  <mat-option value="option3"><mat-icon mat-list-icon color="primary">exit_to_app</mat-icon>Log out</mat-option>
-		</mat-select>
-	</mat-form-field>
-	<button mat-icon-button class="toolbar-icon" aria-label="Example icon-button with share icon">
-		<img mat-raised-button src="assets/user.png" alt="Photo" style="height:40px;" (click)="matSelect.open()">
+
+	<button mat-icon-button class="menu-icon"  [matMenuTriggerFor]="menu" aria-label="Example icon-button with share icon">
+		<img mat-raised-button src="assets/user.png" alt="Photo" style="height:40px;">
 		<span *ngIf="isActive" style="position: absolute; bottom: 0; right: 0; background-color: green; width: 10px; height: 10px; border-radius:10px;"></span>
 	</button>	
+		<mat-menu #menu="matMenu">
+		<button mat-menu-item style="width:140px;" (click)="navigateTo('/profile')"><mat-icon mat-list-icon color="primary">person</mat-icon>Profile</button>
+		<button mat-menu-item (click)="navigateTo('/settings')"><mat-icon mat-list-icon color="primary">settings</mat-icon>Setting</button>
+		<button mat-menu-item *ngIf="isActive"><mat-icon mat-list-icon style="color:green;">check</mat-icon>Online</button>
+		<button mat-menu-item  (click)="logout()"><mat-icon mat-list-icon color="primary">exit_to_app</mat-icon>Log out</button>
+		</mat-menu>
 
 </mat-toolbar>
 <!-- "autosize" is used to exapand sidenav according to screen -->

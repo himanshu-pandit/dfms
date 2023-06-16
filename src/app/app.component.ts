@@ -41,7 +41,7 @@ export class AppComponent {
     this.router.navigate([redirect]); 
   }
 
-  navigateToAddCategory(redirect:any){
-    this.router.navigate(['/addcategory']); 
+  logout(){
+    console.log("logout success.");
   }
 }
