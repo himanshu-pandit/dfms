@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -50,6 +51,8 @@ import { BetweendatesComponent } from './betweendates/betweendates.component';
 import { FooterComponent } from './footer/footer.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -70,6 +73,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     FooterComponent,
     StatisticsComponent,
     ToolbarComponent,
+    SettingsComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +87,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
     MatListModule,
     MatButtonModule,
     MatIconModule,
+    MatBadgeModule,
     MatAutocompleteModule,
     MatButtonToggleModule,
     MatCardModule,

@@ -12,6 +12,8 @@ import { SalesComponent } from './sales/sales.component';
 import { SearchproductComponent } from './searchproduct/searchproduct.component';
 import { BetweendatesComponent } from './betweendates/betweendates.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { SettingsComponent } from './settings/settings.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
@@ -27,6 +29,9 @@ const routes: Routes = [
   { path: 'searchproduct', component: SearchproductComponent },
   { path: 'betweendates', component: BetweendatesComponent },
   { path: 'statistics', component: StatisticsComponent },
+  { path: 'settings', component: SettingsComponent },
+  { path: 'profile', component: ProfileComponent },
+
   
   
 ];

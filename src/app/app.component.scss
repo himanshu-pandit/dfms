@@ -1,15 +1,21 @@
+  .spacer{
+    flex: 1 1 auto;
+  } 
+
+  .menu-icon{
+    display: flex;
+    align-items: center;
+  }
+  
   .sidenav-container {
     height: 100%;
     user-select: none;
   }
+
   .sidenav-content {
     min-height: 100vh;
     flex: 1;
   } 
-
-  .sidenav{
-    width: 240px;
-  }
 
 
   .full-width {
