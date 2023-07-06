@@ -8,9 +8,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  //user is login
-  isActive = true;
-
   isExpanded = false;
   isShowing = false;
   showCategory: boolean = false;
@@ -21,7 +18,7 @@ export class AppComponent {
   //showSubSubMenu: boolean = false;
 
   constructor(private router: Router){
-    
+    this.isLoginPage();
   }
 
   mouseenter() {
@@ -37,11 +34,17 @@ export class AppComponent {
     }
   }
 
+  isLoginPage(){
+    // this.isLoggedIn = authService.isLoggedIn();
+    return this.router.url === '/login';
+  }
+
   navigateTo(redirect:any) {
     this.router.navigate([redirect]); 
   }
 
   logout(){
     console.log("logout success.");
+    this.router.navigate(['/login']); 
   }
 }

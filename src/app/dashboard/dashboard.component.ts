@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
   totalCategory = 0;
   totalCompany  = 0;
@@ -13,7 +14,10 @@ export class DashboardComponent implements OnInit {
   weeksales = 0;
   yesturdaySales = 0;
   todaySales = 0;
-  constructor() { }
+
+  constructor() { 
+  
+  }
 
   ngOnInit(): void {
   }

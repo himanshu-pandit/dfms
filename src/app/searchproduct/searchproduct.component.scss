@@ -1,3 +1,7 @@
+.search-form{
+    width: 100%;
+    max-width: 500px;
+}
 .header{
     display: flex;
     align-items: center;
@@ -53,15 +57,16 @@
     margin-bottom: 16px;
 }
 
+.quantity{
+    width: 100px;
+}
 
 .fieldselect{
     max-width: 120px;
 }
 
-.fieldsearch{
-    flex: 0;
-    margin-left: auto;
-    max-width: 100%;
+.fieldinput{
+    width:100%;
 }
 
 .table-container{
@@ -69,9 +74,13 @@
     max-width: 100%;
 }
 
-// .table-header{
-    // display: flex;
-// }
+.input-header{
+    margin: 6px;
+}
+
+.radio-header{
+    margin-left:8px;
+}
 
 table {
     width: 100%;
@@ -92,10 +101,21 @@ table {
     border-bottom: 1px solid #ddd;
   }
 
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+  
+  .radio-button {
+    margin: 5px;
+  }
+
 
   @media screen and (min-width: 480px) {
 
-    .table-header{
+    .input-header{
         display: flex;
     }
   }

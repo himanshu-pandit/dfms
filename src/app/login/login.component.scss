@@ -1,0 +1,179 @@
+.header{
+    display: flex;
+    align-items: center;
+    color:#c3c3d4;
+}
+
+.title{
+    margin-left: 6px;
+    line-height: 0px;
+}
+
+.sub-title{
+    color:#8f8f90;
+    margin-left: 6px;
+}
+
+.login{
+    // padding: 16px;
+    // width: 100%;
+    // height:100%;
+    // display: flex;
+    display: flex;
+    padding: 16px;
+}
+
+.login-content{
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // width: 100%;
+    // height: 100%;
+    // flex-wrap: wrap;
+    // gap: 20px;
+    // max-width: 1200px;
+    // padding: 16px;
+    // background-color: white;
+
+    flex: 1;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.login-form {
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+}
+
+.form-field{
+    margin: 6px;
+}
+
+.full-width {   
+width: 100%;
+}
+
+.form-field-forgot,.form-field-signp{
+    margin: 6px;
+    margin-bottom: 12px;
+}
+
+.forgot-password{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color:#673ab7;
+}
+
+.spinner{
+    width:40px;
+    height:40px;
+    display: block;
+    margin: auto;
+}
+
+.divider-field{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.line-left{
+    flex:1;
+    margin-left: 6px;
+}
+
+.line-right{
+    flex:1;
+    margin-right: 6px;
+}
+
+
+.text{
+    padding-left: 8px;
+    padding-right: 8px;
+    color:#8f8f90;
+}
+
+
+.mat-button-disabled{
+    color: white !important;
+    background-color: #673ab7 !important;
+}
+
+.sign-up-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up{
+    padding-left: 8px;
+    padding-right: 8px;
+    color:#673ab7;
+    font-weight: 500;
+}
+
+.slideshow{
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // width: 80%;
+    // height: 100%;
+    // flex-wrap: wrap;
+    // gap: 20px;
+    // max-width: 1200px;
+    // padding: 16px;
+    // background-color: #eee8f7;
+
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.slide-image{
+    position: relative;
+}
+
+.slide-buttons{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px; /* Adjust the value as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.slide-button-icon{
+    font-size: 10px;
+    align-items: center;
+    color: #c3c3d4;
+    display: flex;
+    justify-content: center;
+}
+    
+.active-slide{
+    color: black;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+
+//for mobile screen
+@media screen and (max-width: 480px) {
+
+    .slideshow{
+        display: none;
+    }
+    
+    .login-content{
+        padding-top: 32px;
+    }
+}

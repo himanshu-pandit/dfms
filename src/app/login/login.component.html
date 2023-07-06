@@ -1,0 +1,83 @@
+<div class="login">
+    <div class="slideshow">
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+
+            <!-- Full-width images with number and caption text -->
+            <div class="slide-image fade">
+                <img [src]="slideImg" alt="image1" style="width:100%">
+            
+        
+                <!-- Next and previous buttons -->
+                <div class="slide-buttons">
+                    <mat-icon style="margin-right: 16px;" (click)="nextSlide(-1)">keyboard_arrow_left</mat-icon>
+                    <mat-icon class="slide-button-icon" [ngClass]="{'active-slide': slideNo === 0}" (click)="currentSlide(0)">lens</mat-icon>
+                    <mat-icon class="slide-button-icon" [ngClass]="{'active-slide': slideNo === 1}" (click)="currentSlide(1)">lens</mat-icon>
+                    <mat-icon class="slide-button-icon" [ngClass]="{'active-slide': slideNo === 2}"  (click)="currentSlide(2)">lens</mat-icon>
+                    <mat-icon style="margin-left: 16px;" (click)="previousSlide(1)">keyboard_arrow_right</mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-content">  
+        <form class="login-form">
+            <h2 class="title">Welcome Back!</h2>
+            <h4 class="sub-title">Start managing your business faster and better</h4>
+            <div class="form-field">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Phone number, username or email address</mat-label>
+                    <input type="text" matInput [formControl]="usernameFormControl" maxlength="36" [errorStateMatcher]="matcher"
+                            placeholder="Phone number, username or email address">
+                    <mat-icon matPrefix color="primary">account_circle</mat-icon>
+                    <mat-icon matSuffix color="primary" *ngIf="usernameFormControl.valid">check</mat-icon>
+                    <mat-error *ngIf="usernameFormControl.hasError('required')">
+                        Please provide a valid Phone number, username or email address.
+                    </mat-error>
+                    <mat-error *ngIf="usernameFormControl.hasError('pattern') && usernameFormControl.touched">
+                        This symbol is invalid.
+                    </mat-error>
+                
+                </mat-form-field>
+            </div>
+            <div class="form-field">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="{{showPassword ? 'text' : 'password'}}" matInput [formControl]="passwordFormControl" maxlength="10" [errorStateMatcher]="matcher"
+                            placeholder="Password" autocomplete="on">
+                    <mat-icon matPrefix color="primary">lock</mat-icon>
+                    <mat-icon matSuffix color="primary" (click)="toggleShowPassword()">{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <!-- <mat-icon matSuffix color="primary" *ngIf="passwordFormControl.valid">check</mat-icon> -->
+                    <mat-error *ngIf="passwordFormControl.hasError('required')">
+                        Please provide a valid Password.
+                    </mat-error>
+                    <mat-error *ngIf="passwordFormControl.hasError('pattern') && passwordFormControl.touched">
+                        This symbol is invalid.
+                    </mat-error>
+                
+                </mat-form-field>
+            </div>
+            <div class="form-field-forgot">
+                <mat-label class="forgot-password">Forgot password?</mat-label>
+                <mat-progress-spinner *ngIf="showSpinner"
+                    class="spinner"
+                    [color]="color"
+                    [mode]="mode"
+                    [value]="value"
+                    [diameter]="spinnerSize">
+                </mat-progress-spinner>
+            </div>
+            <div class="form-field">
+                <button mat-flat-button color="primary"  class="full-width" style="font-size: 18px;padding: 4px;" [disabled]="!usernameFormControl.valid || !passwordFormControl.valid"  (click)="login()">Log in</button>
+            </div>
+            <div class="divider-field">
+                <div class="line-left"><mat-divider></mat-divider></div>
+                <div class="text mat-typography">or</div>
+                <div class="line-right"><mat-divider></mat-divider></div>
+            </div>
+            <div class="form-field-signp">
+                <mat-label class="sign-up-text">Don't you have an account? <mat-label class="sign-up">Sign Up</mat-label></mat-label>
+            </div>
+        </form>
+    </div>
+</div>

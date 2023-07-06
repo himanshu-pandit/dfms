@@ -32,7 +32,7 @@ export class SearchproductComponent implements OnInit {
     {size: 15},
     {size: 20},
   ];
-  searchproduct: string="";  //search category
+  searchAllProducts: string="";  //search category
   selectedRowIndex: number = -1;
   data: any[]=[]; // Data array to be paginated
   pageSizes = 5; // Default number of items to display per page
@@ -50,10 +50,14 @@ export class SearchproductComponent implements OnInit {
 
   quantity:number=0;  //quantity of products 
 
+  searchProducts = new FormControl('', [Validators.pattern('^[a-zA-Z0-9 ]*$')]);
   customerName = new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9 ]*$')]);
-  customerNumber = new FormControl('', [Validators.required,Validators.maxLength(10)]);
+  customerNumber = new FormControl('', [Validators.required, Validators.pattern('^[0-9 ]*$')]);
 
   matcher = new MyErrorStateMatcher();
+
+  paymentMethods: string[] = ['Cash', 'Credit Card', 'Debit Card','Others'];
+  defualtMethod: string;
 
   constructor() {
     // Initialize your data array
@@ -72,33 +76,40 @@ export class SearchproductComponent implements OnInit {
 
     // Set the totalItems variable
     this.shopingTotalItems = this.shoppingData.length;
+
+    this.defualtMethod = this.paymentMethods[0];
+
   }
 
   ngOnInit(): void {
     
   }
 
+  searchProduct(event: any){
+    const searchProduct = event.target.value;
+    console.log('Search Product:',searchProduct);
+  }
+
+  searchAllProduct(){
+      console.log('searchAllProducts:',this.searchAllProducts);
+  }
+
   onPageChange(event: PageEvent): void {
     this.pageIndex = event.pageIndex;
   }
 
-  editCategory(category: any): void {
-    // Perform the edit operation here
-    console.log('Edit Category:', category);
-  }
+  addCart(){
 
-  deleteCategory(category: any): void {
-    // Perform the delete operation here
-    console.log('Delete Category:', category);
   }
+  
+  removeItem(){
 
-  searchProduct(){
-    console.log("search success.");
   }
 
   emptyCart(){
     console.log("delete success.");
   }
+
 
   totalQuantity(){
       let shopingTotalQuantity = 0;

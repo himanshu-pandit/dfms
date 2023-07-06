@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { ManagecategoryComponent } from './managecategory/managecategory.component';
 import { AddcompanyComponent } from './addcompany/addcompany.component';
@@ -16,7 +17,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
+  { path: '', redirectTo: 'login', pathMatch: 'full' }, 
+  { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'addcategory', component: AddcategoryComponent },
   { path: 'managecategory', component: ManagecategoryComponent },

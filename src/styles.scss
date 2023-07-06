@@ -3,6 +3,10 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+//colors list
+$deeppurple-amber: #673ab7;
+
+
 @media screen and (max-width: 480px) {
 
     .mat-drawer-content{
@@ -10,3 +14,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
 }
 
+
+//radio button outer circle
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    border-color: $deeppurple-amber;
+}
+
+//radio button inner circle
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+    background-color: $deeppurple-amber;
+}

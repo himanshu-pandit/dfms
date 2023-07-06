@@ -37,6 +37,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper';
+
+//services
+import { DataService } from './services/data.service';
+
+//components
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
 import { AddcompanyComponent } from './addcompany/addcompany.component';
@@ -53,6 +58,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -75,6 +81,7 @@ import { ProfileComponent } from './profile/profile.component';
     ToolbarComponent,
     SettingsComponent,
     ProfileComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -115,7 +122,9 @@ import { ProfileComponent } from './profile/profile.component';
     MatStepperModule
 
   ],
-  providers: [],
+  providers: [
+    DataService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

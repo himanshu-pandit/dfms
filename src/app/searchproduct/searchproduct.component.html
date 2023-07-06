@@ -1,26 +1,28 @@
 <mat-progress-bar mode="indeterminate"></mat-progress-bar>  
 <div class="searchproduct">
     <h3 class="header">Search<mat-icon>keyboard_arrow_right</mat-icon>Products</h3>
-    <hr style="color:#e7e7f0;height: 1px;">
+    <mat-divider></mat-divider>
     <h1 class="title"><mat-icon class="title-icon" >open_in_new</mat-icon>Search Products</h1>
     <div class="searchproduct-content">
-        <form class="example-form">
-            <div class="table-header">
-                <mat-form-field appearance="outline" class="fieldsearch">
-                    <mat-label>product Name</mat-label>
-                    <input matInput [(ngModel)]="searchproduct" (keyup)="searchProduct()" placeholder="Search">
+        <form class="search-form">
+            <div class="input-header">
+                <mat-form-field appearance="outline" class="fieldinput">
+                    <mat-label>Product Name</mat-label>
+                    <input type="text" [(ngModel)]="searchAllProducts" matInput     [formControl]="searchProducts" [errorStateMatcher]="matcher" (keyup)="searchProduct($event)" placeholder="Search">
+                    <!-- <mat-error *ngIf="searchProducts.hasError('required')">Please provide a valid number.</mat-error> -->
+                    <mat-error *ngIf="searchProducts.hasError('pattern')">This symbol is invalid.</mat-error>
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </div>
             
-            <div class="table-header">
-                <button mat-flat-button color="primary" class="button-search" (click)="searchProduct()" >Search</button>
+            <div class="input-header">
+                <button mat-flat-button color="primary" class="button-search" [disabled]="!searchProducts.valid" (click)="searchAllProduct()" >Search</button>
             </div>
         </form>
     </div>
 
     <div class="searchedproduct-content">
-        <form class="example-form">
+        <form class="content-form">
             <div class="table-container">
                 <table>
                 <tr>
@@ -38,11 +40,11 @@
                     <td>{{ item.comapany }}</td>
                     <td>{{ item.productName }}</td>
                     <td>{{ item.pricing }}</td>
-                    <td>                    
+                    <td> 
                         <input matInput [(ngModel)]="quantity" value="1" placeholder="Search" style="border:1px solid #38474e;padding:4px;max-width:60px;">
                     </td>
                     <td>
-                        <button mat-stroked-button color="primary" (click)="searchProduct()" >Add Cart</button>
+                        <button mat-stroked-button color="primary" (click)="addCart()" >Add Cart</button>
                     </td>
                 </tr>
                 </table>
@@ -56,11 +58,11 @@
     <div class="selectedproduct-content">
         <h1 class="title"><mat-icon class="title-icon" >open_in_new</mat-icon>Shopping Cart</h1>
         <hr style="color:#e7e7f0;height: 1px;">
-        <form class="example-form">
+        <form class="shopping-form">
             <div class="table-container">
 
-                <p style="color:red;font-weight:500;font-size:16px;display:inline-block;margin-top: 4px;margin-left: 12px;">Your Cart is Empty</p>
-                <button mat-stroked-button color="warn" (click)="emptyCart()" style="float:right;margin-right:12px;">Empty Cart</button>
+                <p style="color:red;font-weight:500;font-size:16px;margin-top: 4px;text-align: center;">Your Cart is Empty</p>
+                <button mat-stroked-button color="warn" (click)="emptyCart()" style="float:right;margin-top: 4px;">Empty Cart</button>
 
                 <table>
                     <tr>
@@ -82,7 +84,7 @@
                         <td>{{ item.unitPrice }}</td>
                         <td>{{ item.quantity * item.unitPrice }}</td>
                         <td>
-                            <button mat-stroked-button color="warn" (click)="searchProduct()" >Remove Item</button>
+                            <button mat-stroked-button color="warn" (click)="removeItem()" >Remove Item</button>
                         </td>
                     </tr>
                     <tr>
@@ -99,27 +101,51 @@
                 <mat-paginator [pageSize]="pageSizes"  [length]="totalItems" (page)="onPageChange($event)"></mat-paginator>
             </div>
             <div>
-                <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Customer Name</mat-label>
-                    <input type="text" matInput [formControl]="customerName" [errorStateMatcher]="matcher"
-                            placeholder="Category">
-                    <mat-icon matSuffix color="primary" *ngIf="customerName.valid">check</mat-icon>
-                    <!-- <mat-icon matSuffix color="primary" *ngIf="customerName.hasError('required')">clear</mat-icon> -->
-                    <mat-error *ngIf="customerName.hasError('required')">
-                    Please provide a valid customer name.
-                    </mat-error>
-                    <mat-error *ngIf="customerName.hasError('pattern') && customerName.touched">This symbol is invalid.</mat-error>
-                
-                </mat-form-field>
+                <form class="search-form">
+                    <div class="input-header">
+                        <mat-form-field class="fieldinput" appearance="outline">
+                            <mat-label>Customer Name</mat-label>
+                            <input type="text" matInput [formControl]="customerName" [errorStateMatcher]="matcher"
+                                    placeholder="Customer Name">
+                            <mat-icon matSuffix color="primary" *ngIf="customerName.valid">check</mat-icon>
+                            <!-- <mat-icon matSuffix color="primary" *ngIf="customerName.hasError('required')">clear</mat-icon> -->
+                            <mat-error *ngIf="customerName.hasError('required')">
+                            Please provide a valid customer name.
+                            </mat-error>
+                            <mat-error *ngIf="customerName.hasError('pattern') && customerName.touched">This symbol is invalid.</mat-error>
+                        </mat-form-field>
+                    </div>
 
-                <mat-form-field class="example-full-width" appearance="outline">
-                    <mat-label>Customer Number</mat-label>
-                    <input type="number" matInput [formControl]="customerNumber" [errorStateMatcher]="matcher" placeholder="Category">
-                    <mat-icon matSuffix color="primary" *ngIf="customerNumber.valid">check</mat-icon>
-                    <mat-error *ngIf="customerNumber.hasError('required')">Please provide a valid number.</mat-error>
-                    <mat-error *ngIf="customerNumber.hasError('maxLength')">Number should be 10 digits only.</mat-error>
-                  
-                </mat-form-field> 
+                    <div class="input-header">
+                        <mat-form-field class="fieldinput" appearance="outline">
+                            <mat-label>Customer Number</mat-label>
+                            <input type="tel" matInput [formControl]="customerNumber" [errorStateMatcher]="matcher" minlength="10" maxlength="10" placeholder="Customer Number">
+                            <mat-icon matSuffix color="primary" *ngIf="customerNumber.valid">check</mat-icon>
+                            <mat-error *ngIf="customerNumber.hasError('required')">Please provide a valid number.</mat-error>
+                            <mat-error *ngIf="customerNumber.hasError('pattern')">This symbol is invalid.</mat-error>
+                        </mat-form-field> 
+                    </div>
+
+                    <div class="radio-header">
+                        <label id="radio-group-label">Select Payment Method:</label>
+                        <mat-radio-group
+                        aria-labelledby="radio-group-label"
+                        class="radio-group"
+                        [(ngModel)]="defualtMethod"
+                        name="paymentMethods">
+                        <mat-radio-button class="radio-button" *ngFor="let paymentMethod of paymentMethods" [value]="paymentMethod">
+                        {{paymentMethod}}
+                        </mat-radio-button>
+                        </mat-radio-group>
+                        <label id="radio-group-label">Select Payment Method:{{defualtMethod}}</label>
+                    </div>
+
+                    <div class="input-header">
+                        <button mat-flat-button color="primary" class="button-search" (click)="searchAllProduct()" [disabled]="!customerNumber.valid || !customerName.valid">Checkout</button>
+                    </div>
+
+                </form>
+    
             </div>
         </form>
     </div>
